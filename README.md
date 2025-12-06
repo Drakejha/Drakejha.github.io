@@ -1,3 +1,6 @@
+Code:
+[Open the project notebook in Google Colab](https://colab.research.google.com/github/Drakejha/Drakejha.github.io/blob/main/Drake_Jha_Final_Project (1).ipynb)
+
 Introduction:
 
 In this project I use machine learning to predict the strength of a poker hand from the five cards that are dealt. The goal is to look at the suits and ranks of the cards and classify the hand as “nothing”, “one pair”, “two pairs”, “full house”, all the way up to “royal flush”. This is a good test problem because there are many possible hands, but strong hands are rare, so the classes are very unbalanced and harder to learn.
