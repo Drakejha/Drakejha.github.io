@@ -61,5 +61,19 @@ Among the real models, the Random Forest classifier performed the best. On the h
 
 If I continued this project, I would focus on improving performance for these rare, high-value hands. Possible next steps would be to handle the class imbalance more directly (for example by oversampling rare classes or using class-weighted training) and to add more poker-style features, such as “number of cards with the same rank” or “is_flush.” Overall, this project showed that machine learning can learn meaningful patterns from poker data, but it also highlighted how important data balance and good evaluation metrics are when judging a model.
 
+References:
+
+Cattral, Robert, and Franz Oppacher. Poker Hand. UCI Machine Learning Repository, 2006, https://doi.org/10.24432/C5KW38
+.
+
+Géron, Aurélien. Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow. 2nd ed., O’Reilly Media, 2019.
+
+Pedregosa, Fabian, et al. “Scikit-learn: Machine Learning in Python.” Journal of Machine Learning Research, vol. 12, 2011, pp. 2825–2830.
+
+“API Reference.” scikit-learn, scikit-learn.org/stable/modules/classes.html.
+
+“Poker Hand Rankings.” World Series of Poker, www.wsop.com/poker-hands/
+.
+
 
 
