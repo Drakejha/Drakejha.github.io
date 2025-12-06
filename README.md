@@ -1,3 +1,9 @@
+Drake Jha
+Department of Atmospheric and Oceanic Sciences, UCLA
+AOS C111 / C204: Introduction to Machine Learning for the Physical Sciences
+Dr. Alexander Lozinski
+December 5, 2025
+
 Code:
 [Open the project notebook in Google Colab](https://colab.research.google.com/github/Drakejha/Drakejha.github.io/blob/main/Drake_Jha_Final_Project (1).ipynb)
 
@@ -19,7 +25,7 @@ The zip file already comes with a fixed split: 25,010 hands for training and 1,0
 
 One important property of this dataset is that the classes are very unbalanced. When I counted the number of examples of each hand class in the training set, I found that most hands are class 0 or 1 (no pair or one pair), which together make up over 90% of the data. The very strong hands, like full houses, four of a kind, straight flushes, and royal flushes (classes 6 to 9), are extremely rare. This class imbalance matters because a model can get a pretty good overall accuracy just by focusing on the common classes, while still performing poorly on the rare but interesting strong hands.
 
-The pre-processing for this project was kept simple and stayed within the material from the course. I read the CSV files with pandas, set the column names, used only the numeric card columns S1–S5 and C1–C5 as features, and used “hand” as the target. I checked that the data types were integers and that there were no missing values. I did not use any scaling or advanced feature engineering, because the models we used (logistic regression, decision tree, and random forest) can work directly with these integer-coded inputs.
+The pre-processing for this project was kept simple and stayed within the material from the course. I read the CSV files with pandas, set the column names, used only the numeric card columns S1–S5 and C1–C5 as features, and used “hand” as the target. I checked that the data types were integers and that there were no missing values. I did not use any scaling or advanced feature engineering, because the models used (logistic regression, decision tree, and random forest) can work directly with these integer-coded inputs.
 
 Modeling:
 
@@ -43,7 +49,7 @@ Figure 3:
 
 <img width="588" height="390" alt="image" src="https://github.com/user-attachments/assets/f6bc7a49-d518-4894-afa1-4eb4656d4fd5" />
 
-Figure 1 shows the class distribution in the training data. Most hands are class 0 (“nothing in hand”) or class 1 (“one pair”), while the stronger hands, especially classes 6–9 (full house, four of a kind, straight flush, royal flush), have only a few examples each. This confirms that the dataset is extremely imbalanced. Because of this, a model can get a pretty high overall accuracy just by predicting the common classes, so we have to be careful when we interpret accuracy.
+Figure 1 shows the class distribution in the training data. Most hands are class 0 (“nothing in hand”) or class 1 (“one pair”), while the stronger hands, especially classes 6–9 (full house, four of a kind, straight flush, royal flush), have only a few examples each. This confirms that the dataset is extremely imbalanced. Because of this, a model can get a pretty high overall accuracy just by predicting the common classes, so I have to be careful when interpreting accuracy.
 
 Figure 2 compares the test accuracies of the four models on the 1,000,000-hand test set. The baseline model (always predicting class 0) and logistic regression both reach about 0.50 accuracy, which is only slightly better than random guessing among 10 classes but already shows the effect of class imbalance. The decision tree does a bit worse overall, around 0.48, and seems to overfit the training data. The random forest clearly performs the best, reaching about 0.61 test accuracy, which is roughly 10 percentage points higher than the baseline and the other models.
 
@@ -51,11 +57,11 @@ Figure 3 shows the confusion matrix for the random forest on the test set. The d
 
 Discussion:
 
-Overall, the results fit what we would expect from the class imbalance and from the types of models I used. Because most examples are “nothing in hand” or “one pair,” even a simple baseline that always predicts class 0 already reaches about 0.50 accuracy. Logistic regression ends up very close to this baseline. It is a linear model, so it mostly learns to separate the common classes and has trouble modeling the more complicated patterns needed to recognize rare strong hands.
+Overall, the results fit what was expected from the class imbalance and from the types of models I used. Because most examples are “nothing in hand” or “one pair,” even a simple baseline that always predicts class 0 already reaches about 0.50 accuracy. Logistic regression ends up very close to this baseline. It is a linear model, so it mostly learns to separate the common classes and has trouble modeling the more complicated patterns needed to recognize rare strong hands.
 
 The decision tree can, in theory, learn more complex decision boundaries, but on this very imbalanced dataset it tends to overfit the training data. That is why its test accuracy (about 0.48) is actually a bit worse. The confusion matrix and classification report show that the tree does not treat the rare classes much better than the simpler models.
 
-The random forest performs best, with test accuracy around 0.61. This makes sense because a random forest is an ensemble of many decision trees trained on different subsets of the data, so averaging their predictions reduces variance and usually generalizes better. In the confusion matrix we see that the random forest is better at separating “nothing,” “one pair,” and “two pair” than the other models, but it still has low recall for the very strongest hands (classes 7–9). This matches the ideas from Lecture 2.3: even when overall accuracy improves, we still need to check per-class precision and recall, especially for minority classes. In this project, accuracy alone would hide the fact that all models, including the random forest, still miss most of the rare but most valuable poker hands.
+The random forest performs best, with test accuracy around 0.61. This makes sense because a random forest is an ensemble of many decision trees trained on different subsets of the data, so averaging their predictions reduces variance and usually generalizes better. In the confusion matrix, the random forest is better at separating “nothing,” “one pair,” and “two pair” than the other models, but it still has low recall for the very strongest hands (classes 7–9). This matches the ideas from Lecture 2.3: even when overall accuracy improves, there's still a need to check per-class precision and recall, especially for minority classes. In this project, accuracy alone would hide the fact that all models, including the random forest, still miss most of the rare but most valuable poker hands.
 
 Conclusion:
 In this project I built and compared several machine-learning models to predict the strength of poker hands. A simple baseline model that always predicts “no made hand” (class 0) already reaches about 50% test accuracy, because more than half of all examples are in that class. This showed me that accuracy by itself can be misleading when the dataset is very imbalanced, and that every “real” model should first be compared against a basic baseline.
