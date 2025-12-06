@@ -1,7 +1,11 @@
 Drake Jha
+
 Department of Atmospheric and Oceanic Sciences, UCLA
+
 AOS C111 / C204: Introduction to Machine Learning for the Physical Sciences
+
 Dr. Alexander Lozinski
+
 December 5, 2025
 
 Code:
