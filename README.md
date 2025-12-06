@@ -8,6 +8,8 @@ Dr. Alexander Lozinski
 
 December 5, 2025
 
+<h2 align="center">Using Machine Learning to Examine Poker Hands from Data</h2>
+
 Code:
 [Open the project notebook in Google Colab](https://colab.research.google.com/github/Drakejha/Drakejha.github.io/blob/main/Drake_Jha_Final_Project (1).ipynb)
 
